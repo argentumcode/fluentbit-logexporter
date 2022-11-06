@@ -1,0 +1,10 @@
+builds:
+  - id: "fluentbit-logexporter"
+    goos:
+      - linux
+    goarch:
+      - amd64
+    flags: -buildmode=c-shared
+    ldflags: -s -w
+    main: .
+    binary: out_logexporter.so

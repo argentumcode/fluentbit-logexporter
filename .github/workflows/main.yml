@@ -1,0 +1,35 @@
+name: Lint / Check Build
+on:
+  push:
+
+jobs:
+  golangci:
+    name: Lint
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@07db5389c99593f11ad7b44463c2d4233066a9b1 # v3.3.0
+        with:
+          version: v1.49.0
+
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+          cache: true
+
+      - run: go test
+
+      - name: Check git repository clean
+        run: git diff --exit-code
