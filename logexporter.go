@@ -146,7 +146,12 @@ func FLBPluginInit(plugin unsafe.Pointer) int {
 }
 
 func recordToStr(v interface{}) string {
-	return fmt.Sprint(v)
+	switch val := v.(type) {
+	case []byte:
+		return string(val)
+	default:
+		return fmt.Sprint(v)
+	}
 }
 
 //export FLBPluginFlushCtx
