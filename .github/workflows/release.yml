@@ -7,7 +7,7 @@ on:
 jobs:
   release-prepare:
     name: Prepare Release
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     outputs:
       result: ${{ steps.prepare.outputs.result }}
       version: ${{ steps.prepare.outputs.version }}
@@ -22,7 +22,7 @@ jobs:
 
   release:
     name: Release
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs:
       - release-prepare
     if: ${{ needs.release-prepare.outputs.result == 'release' }}
@@ -53,7 +53,7 @@ jobs:
 
   release-pull-request:
     name: Create Release Pull Request
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs:
       - release-prepare
     if: ${{ needs.release-prepare.outputs.result == 'prepare' }}
