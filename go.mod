@@ -23,6 +23,6 @@ require (
 	github.com/prometheus/statsd_exporter v0.22.8 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/sys v0.1.0 // indirect
-	google.golang.org/protobuf v1.28.1 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
